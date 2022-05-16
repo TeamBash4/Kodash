@@ -1,4 +1,4 @@
-# Kodash
+# Kodash 👨‍💻
 Kodash is a development and deployment platform for developers. It allows users to do following tasks:
 1. Compile, Run and Share Code
 2. Host Static websites
@@ -15,9 +15,9 @@ Kodash provides static website hosting service. You can host your static website
 
 ### Developed By TeamBash4:
 **Team members:**
-- Abhishek Verma
-- Javed Akhtar
-- Partha Maity
-- Vikas Kumar
+- Abhishek Verma 👨‍💻
+- Javed Akhtar 🎨
+- Partha Maity 👨‍💻
+- Vikas Kumar 👨‍💻
 
 **Disclaimer:**  You can contribute to this project by fixing bugs and introducing new features. You can fork the project, make changes and send a pull request. We will review the changes and approve the request.
