@@ -21,12 +21,16 @@
             </svg>
             Kodash
         </div>
-        <nav class="navBar align-flex">
+        <nav class="navBar align-flex hide">
             <button class="about btn"><a href="index.html">Home</a></button>
             <div class="dot">.</div>
             <button class="FAQ btn"><a href="#">Hosted Site</a></button>
+            <img src="link/cross.svg" alt="" class="close">
         </nav>
-        <button class="tm"><a href="#" class="team">Our Team</a></button>
+        <button class="tm hide"><a href="#" class="team">Our Team</a></button>
+        <div class="hamburger">
+            <img src="link/hamburger1.svg" alt="hamburger menu" class="hamMenu">
+        </div>
     </header>
     <div class="container">
         <div class="dragArea">
@@ -38,8 +42,8 @@
                 <img src="link/img-icon.svg" alt="image icon" class="svg5 svg">
             </div>
             <div class="textBox">
-                <p class="txt">Drag and Drop your files here</p>
-                <p class="txt">or</p>
+                <p class="txt drag">Drag and Drop your files here</p>
+                <p class="txt or">or</p>
                 <p class="txt">Click to upload files</p>
             </div>
         </div>
@@ -66,4 +70,5 @@
         </div>
     </div>
 </body>
+<script src="link/script.js"></script>
 </html>

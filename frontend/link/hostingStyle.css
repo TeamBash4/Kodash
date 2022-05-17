@@ -205,3 +205,149 @@ label:hover{
     font-size: 1.5vw;
     font-weight: 500;
 }
+
+.close, .hamburger{
+    display: none;
+}
+
+
+@media only screen and (max-width: 640px){
+
+    .hamburger{
+        display: block;
+        margin-top: 18px;
+        cursor: pointer;
+    }
+
+    .hamMenu{
+        height: 55px;
+        width: 55px;
+    }
+
+    .navBar{
+        position: fixed;
+        top: 0;
+        color: white;
+        background-color: #333;
+        height: 100vh;
+        width: 100vw;
+        left: 0;
+        z-index: 1;
+        flex-direction: column;
+        justify-content: unset;
+        padding-top: 130px;
+        padding-left: 50px;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .dot{
+        display: none;
+    }
+
+    .navBar a{
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .close{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 10px;
+        height: 100px;
+        width: 100px;
+        z-index: 2;
+    }
+
+    .tm{
+        position: absolute;
+        left: 50px;
+        top: 300px;
+        z-index: 2;
+    }
+
+    .team{
+        font-size: 1.2rem;
+        padding: 15px 40px;
+        border-radius: 30px 30px;
+        background-color: white;
+        color: #222;
+    }
+
+    .logo-box{
+        font-size: 1.5rem;
+    }
+
+    .logo{
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+    }
+
+    .hide{
+        display: none;
+    }
+
+    header{
+        margin: 4% 8% 0 8%;
+    }
+
+    .container{
+        flex-direction: column;
+        align-items: center;
+        height: 550px;
+        gap: 40px;
+        margin-top: 6%;
+    }
+
+    .dragArea{
+        width: 100%;
+        height: 350px;
+    }
+
+    .drag, .or{
+        display: none;
+    }
+
+    .svg1, .svg5{
+        height: 5vw;
+        width: 5vw;
+        
+    }
+    
+    .svg2, .svg4{
+        height: 6vw;
+        width: 6vw;
+    }
+    
+    .svg3{
+        height: 8vw;
+        width: 8vw;
+    }   
+
+    .txt{
+        font-size: 1.2rem;
+    }
+
+    .options{
+        height: 100%;
+        align-self: flex-start;
+    }
+
+    .setting{
+        font-size: 2rem;
+    }
+
+    .toolTitle{
+        font-size: 1rem;
+    }
+
+    .url, label{
+        font-size: 0.9rem;
+    }
+
+    .host, .edit{
+        font-size: 1rem;
+    }
+}
