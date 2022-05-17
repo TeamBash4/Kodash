@@ -146,7 +146,6 @@ main{
 
 .hostBtn:hover, .editorBtn:hover{
     background-image: linear-gradient(to bottom left, rgba(18, 18, 18, 0.9) 35%, rgba(53, 56, 53, 0.6));
-    /* color: white; */
 }
 
 
@@ -178,19 +177,15 @@ main{
     font-size: 2vw;
     font-weight: bold;
     margin-top: 3%;
-    /* text-align: center; */
     padding-left: 5vw;
 }
 
 .hosted-site-box{
-    /* border: 1px solid red; */
     margin: 0 5vw;
     margin-top: 3%;
 }
 
 .hosted-site{
-    /* border: 3px solid rgba(255, 255, 255, 0.5); */
-    /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4); */
     color: #ddd;
     padding: 1rem 1.5rem;
     border-radius: 10px;
@@ -199,7 +194,6 @@ main{
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8);
     margin-bottom: 15px;
-    /* font-weight: lighter; */
 }
 
 .sl{
@@ -214,7 +208,6 @@ main{
 .csd-btn{
     display: flex;
     gap: 20px;
-    /* border: 1px solid red; */
     margin-left: auto;
 }
 
@@ -227,7 +220,6 @@ main{
 }
 
 
-/* mobile style */
 
 @media only screen and (max-width: 640px){
 
@@ -235,9 +227,6 @@ main{
         display: block;
         margin-top: 18px;
         cursor: pointer;
-        /* height: 40px; */
-        /* width: 4vw; */
-        /* border: 1px solid red; */
     }
 
     .hamMenu{
@@ -246,7 +235,6 @@ main{
     }
 
     .navBar{
-        /* display: none;      */
         position: fixed;
         top: 0;
         color: white;
@@ -260,8 +248,6 @@ main{
         padding-top: 130px;
         padding-left: 50px;
         gap: 20px;
-        /* text-align: left; */
-        /* justify-content: flex-start; */
         align-items: flex-start;
     }
 
@@ -272,7 +258,6 @@ main{
     .navBar a{
         color: white;
         font-size: 1.2rem;
-        /* margin-bottom: 20px; */
     }
 
     .close{
@@ -286,12 +271,10 @@ main{
     }
 
     .tm{
-        /* display: none; */
         position: absolute;
         left: 50px;
         top: 300px;
         z-index: 2;
-        /* font-size: 1.3rem; */
     }
 
     .team{
@@ -310,7 +293,6 @@ main{
         height: 20px;
         width: 20px;
         margin-right: 5px;
-        /* border: 1px solid red; */
     }
 
     .toolBtn{
@@ -329,20 +311,14 @@ main{
     
     .toolBtn{
         margin-top: 40px;
-        /* border: 1px solid red; */
         width: 90%;
-        /* justify-content: center; */
         align-items: center;
     }
 
     .hostBtn, .editorBtn{
         padding: 20px;
-        /* margin: 10px; */
         min-width: 280px;
-        /* width: 20%; */
         height: 150px;
-
-        /* border: 1px solid red; */
     }
 
     .hostBtn h1, .editorBtn h1{
@@ -351,7 +327,6 @@ main{
 
     .hostBtn p, .editorBtn p{
         font-size: 0.9rem;
-        /* border: 1px solid red; */
     }
 
     main{
