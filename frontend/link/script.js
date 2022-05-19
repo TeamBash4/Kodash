@@ -5,10 +5,23 @@ const navBar = document.querySelector('.navBar');
 const tm = document.querySelector('.tm');
 const closeBtn = document.querySelector('.close');
 
-const showHideHamburger = function(){
-    navBar.classList.toggle('hide');
-    tm.classList.toggle('hide');
+const showHamburger = function(){
+    navBar.style.left = 0;
+    navBar.style.transitionDuration = "400ms";
+    navBar.style.opacity = 1;
+    tm.style.left = "50px";
+    tm.style.transitionDuration = "400ms";
+    tm.style.opacity = 1;
 }
 
-hamburger.addEventListener("click", showHideHamburger);
-closeBtn.addEventListener('click', showHideHamburger);
+const HideHamburger = function(){
+    navBar.style.left = "100%";
+    navBar.style.transitionDuration = "400ms";
+    navBar.style.opacity = 0;
+    tm.style.left = "100%";
+    tm.style.transitionDuration = "400ms";
+    tm.style.opacity = 0;
+}
+
+hamburger.addEventListener("click", showHamburger);
+closeBtn.addEventListener('click', HideHamburger);

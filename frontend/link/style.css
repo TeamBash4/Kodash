@@ -10,10 +10,12 @@ html{
 }
 
 body{
-    background-image: url("/link/bg-img.jpg");
+    background-image: url("../link/bg-img.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 0 20px;
+    user-select: none;
+    padding-bottom: 3rem;
 }
 
 .flex{
@@ -53,7 +55,8 @@ header{
 }
 
 .navBar{
-    width: 22%;
+    width: fit-content;
+    gap: 15px;
     justify-content: space-between;
 }
 
@@ -171,29 +174,56 @@ main{
 
 
 
-/* hosted site style */
-
 .host-title{
-    font-size: 2vw;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-top: 3%;
     padding-left: 5vw;
 }
 
+.hosted-site-box::-webkit-scrollbar{
+    width: 5px;
+}
+
+.hosted-site-box::-webkit-scrollbar-thumb{
+    background-color: rgba(153, 153, 153, 0.5);
+    border-radius: 5px;
+}
+
 .hosted-site-box{
-    margin: 0 5vw;
-    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 60%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 4%;
+    height: 65vh;
+    overflow: scroll;
+    scrollbar-width: none;
+    overflow-x: hidden;
 }
 
 .hosted-site{
+    width: 100%;
     color: #ddd;
-    padding: 1rem 1.5rem;
+    padding: 1.3rem 2rem;
     border-radius: 10px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    user-select: text;
+
+}
+
+.name{
+    display: flex;
+    align-self: flex-start;
 }
 
 .sl{
@@ -202,13 +232,33 @@ main{
 }
 
 .sl, .site-title{
-    font-size: 1.2vw;
+    font-size: 1.2rem;
+}
+
+.site-title{
+    cursor: pointer;
+    user-select: none;
 }
 
 .csd-btn{
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1.5rem;
     gap: 20px;
     margin-left: auto;
+    user-select: none;
+}
+
+.csd-btn img{
+    height: 20px;
+    cursor: pointer;
+}
+
+.time{
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
 .hamburger{
@@ -217,6 +267,12 @@ main{
 
 .close{
     display: none;
+}
+
+@media only screen and (max-width: 1360px){
+    .hosted-site-box{
+        width: 70%;
+    }
 }
 
 
@@ -237,11 +293,11 @@ main{
     .navBar{
         position: fixed;
         top: 0;
+        left: 100%;
         color: white;
         background-color: #333;
         height: 100vh;
         width: 100vw;
-        left: 0;
         z-index: 1;
         flex-direction: column;
         justify-content: unset;
@@ -249,6 +305,7 @@ main{
         padding-left: 50px;
         gap: 20px;
         align-items: flex-start;
+        opacity: 0;
     }
 
     .dot{
@@ -271,10 +328,12 @@ main{
     }
 
     .tm{
-        position: absolute;
-        left: 50px;
+        position: fixed;
+        min-width: fit-content;
+        left: 100%;
         top: 300px;
         z-index: 2;
+        opacity: 0;
     }
 
     .team{
@@ -331,10 +390,14 @@ main{
 
     main{
         margin-top: 10%;
+    }   
+
+    .hosted-site-box{
+        width: 90%;
+        margin-top: 8%;
     }
 
-    .hide{
-        display: none;
+    .site-title, .sl{
+        font-size: 1.1rem;
     }
-   
 }

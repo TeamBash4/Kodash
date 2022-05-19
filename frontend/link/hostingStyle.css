@@ -11,10 +11,12 @@ html{
 
 body{
     min-width: 100vw;
-    background-image: url("/link/hostingAreaImg.jpg");
+    background-image: url("../link/hostingAreaImg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
+    user-select: none;
+    padding-bottom: 3rem;
 }
 
 .flex{
@@ -133,17 +135,23 @@ a{
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.url, label{
+.url, .siteUrl{
     color: #999;
     font-size: 1.1vw;
 }
 
 .url{
     cursor: pointer;
+    display: flex;
+    color: #ccc;
+    user-select: text;
 }
 
-label:hover{
-    color: lightgreen;
+.siteUrl{
+    background-color: transparent;
+    padding-left: 2px;
+    border: none;
+    width: 100px;
 }
 
 .time{
@@ -210,6 +218,68 @@ label:hover{
     display: none;
 }
 
+.available{
+    height: 1.1rem;
+    width: 1.1rem;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #61f10e;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+label:hover{
+    color: lightgreen;
+}
+
+
+
 
 @media only screen and (max-width: 640px){
 
@@ -227,11 +297,11 @@ label:hover{
     .navBar{
         position: fixed;
         top: 0;
+        left: 100%;
         color: white;
         background-color: #333;
         height: 100vh;
         width: 100vw;
-        left: 0;
         z-index: 1;
         flex-direction: column;
         justify-content: unset;
@@ -239,6 +309,7 @@ label:hover{
         padding-left: 50px;
         gap: 20px;
         align-items: flex-start;
+        opacity: 0;
     }
 
     .dot{
@@ -261,10 +332,12 @@ label:hover{
     }
 
     .tm{
-        position: absolute;
-        left: 50px;
+        position: fixed;
+        min-width: fit-content;
+        left: 100%;
         top: 300px;
         z-index: 2;
+        opacity: 0;
     }
 
     .team{
@@ -283,10 +356,6 @@ label:hover{
         height: 20px;
         width: 20px;
         margin-right: 5px;
-    }
-
-    .hide{
-        display: none;
     }
 
     header{
@@ -343,7 +412,7 @@ label:hover{
         font-size: 1rem;
     }
 
-    .url, label{
+    .url, .siteUrl, label{
         font-size: 0.9rem;
     }
 
