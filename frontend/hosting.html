@@ -51,8 +51,8 @@
             <p class="setting">Settings</p>
             <div class="hostUrl">
                 <p class="toolTitle">Host URL</p>
-                <div class="url">https://www.kodash.io/ <input type="text" class="siteUrl" value="index.html">
-                    <img src="link/available.svg" alt="available sign" class="available">
+                <div class="url">https://www.kodash.io/ <input id="siteURL" type="text" class="siteUrl" value="index.html">
+                    <img id="statuscheck" src="./link/loader.gif" alt="available sign" class="available">
                 </div>
             </div>
             <div class="duration">
@@ -60,8 +60,8 @@
                 <div class="time">
                     <div> <input type="radio" name="timeExpire" value="6" id="6h">  <label for="6h">6 hour</label> </div>
                     <div> <input type="radio" name="timeExpire" value="12" id="12h">  <label for="12h">12 hour</label> </div>
-                    <div> <input type="radio" name="timeExpire" value="1" id="1d">  <label for="1d">1 day</label> </div>
-                    <div> <input type="radio" name="timeExpire" value="1" id="1w">  <label for="1w">1 week</label> </div>
+                    <div> <input type="radio" name="timeExpire" value="1d" id="1d">  <label for="1d">1 day</label> </div>
+                    <div> <input type="radio" name="timeExpire" value="1w" id="1w">  <label for="1w">1 week</label> </div>
                 </div>
             </div>
             <div class="hostbtn">
@@ -70,6 +70,7 @@
             </div>
         </div>
     </div>
+    <script src="./hosting.js"></script>
 </body>
 <script src="link/script.js"></script>
 </html>
