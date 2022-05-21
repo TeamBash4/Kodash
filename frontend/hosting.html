@@ -32,7 +32,7 @@
         </div>
     </header>
     <div class="container">
-        <div class="dragArea">
+        <div id="dragArea" class="dragArea">
             <div class="symbolBox">
                 <img src="link/html-icon.svg" alt="html image" class="svg1 svg">
                 <img src="link/css-icon.svg" alt="css image" class="svg2 svg">
@@ -44,15 +44,19 @@
                 <p class="txt drag">Drag and Drop your files here</p>
                 <p class="txt or">or</p>
                 <p class="txt">Click to upload files</p>
+                <input type="file" id="filepicker" multiple> 
             </div>
         </div>
-
+        <div class="output">
+            <ul id="listing"></ul>
+        </div>
         <div class="options">
             <p class="setting">Settings</p>
             <div class="hostUrl">
                 <p class="toolTitle">Host URL</p>
-                <div class="url">https://www.kodash.io/ <input id="siteURL" type="text" class="siteUrl" value="index.html">
+                <div id="url" class="url">https://www.kodash.io/ <input id="siteURL" type="text" class="siteUrl" value="index.html">
                     <img id="statuscheck" src="./link/loader.gif" alt="available sign" class="available">
+                    <br/><p id="warn"></p>
                 </div>
             </div>
             <div class="duration">
@@ -65,7 +69,7 @@
                 </div>
             </div>
             <div class="hostbtn">
-                <a href="#" class="host">Start Hosting</a>
+                <a href="#" id="start" class="host">Start Hosting</a>
                 <a href="#" class="edit">Edit</a>
             </div>
         </div>
