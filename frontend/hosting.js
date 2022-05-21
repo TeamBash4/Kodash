@@ -19,28 +19,24 @@ function uploadSite(){
 checkAvailibility(455)
 siteURL.addEventListener('input', checkAvailibility)
 
-function checkAvailibility(type) {
+function checkAvailibility() {
     document.getElementById("statuscheck").src = "link/loader.gif";
     var websiteId = siteURL.value;
-    if (type == 455) {
         if (websiteId.length >= 3 && websiteId.length <= 30) {
             setTimeout(async () => {
                 console.log(websiteId)
                 var checkStatus = await fetch(apiURL + "/isvalid?path=" + websiteId)
                 if (checkStatus.status == 200) {
                     document.getElementById("statuscheck").src = "./link/available.svg";
-                    console.log(checkStatus.status)
+                    console.log(checkStatus.status) // check this error
                 } else if (checkStatus.status == 404) {
-                    document.getElementById("statuscheck").src = "./link/cross.svg";
+                    document.getElementById("statuscheck").src = "./link/notAvailable.svg";
                 } else {
                     document.getElementById("statuscheck").src = "./link/loader.gif";
                 }
             }, 1000);
-        } else {
-            document.getElementById("warn").innerText = "Your website Id mus be between 3 and 30 characters.";
         }
     }
-}
 /* Generating a Random String */
 
 function randomString(length) {
