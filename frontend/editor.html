@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="link/editor.css">
+    <title>Editor</title>
+</head>
+<body>
+    <div class="container">
+        <div class="editor-box">
+            <div class="tool-box">
+                <svg width="30" height="30" viewBox="0 0 48 45" class="logo">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24 0C19.591 0 15.9999 3.60704 15.9999 8.03564V22.4998C15.9999 22.7882 15.8471 23.0508 15.5985 23.195L4.0061 30.0605C1.5321 31.4954 0.00494956 34.1447 1.23499e-05 37.0052C-0.00248771 38.4354 0.374664 39.8105 1.06252 41.0072C1.75037 42.2039 2.7483 43.2213 3.98288 43.9341C5.18683 44.6293 6.52829 44.9845 7.87404 44.9992C9.28801 45.015 10.7059 44.6552 11.9738 43.9198L23.6 36.5894C23.7225 36.5184 23.8628 36.4825 24 36.4829C24.1414 36.4829 24.28 36.5224 24.4061 36.5959L36.0277 43.9205C37.283 44.6488 38.6552 44.9971 40.0099 45C42.7746 45.0057 45.4654 43.5726 46.9389 41.0094C47.6604 39.7546 48.0022 38.381 48 37.0242C47.9961 34.2516 46.5585 31.5478 43.9949 30.0609L32.3998 23.195C32.1512 23.0508 31.9998 22.7882 31.9998 22.4998V8.03566C31.9998 3.60706 28.4087 2.73254e-05 23.9997 2.73254e-05L24 0Z" fill="#fff"/>
+                </svg>
+                <div class="title-box">
+                    <img src="link/python.svg" class="title-logo">
+                    <input type="text" class="title" value="main_script.py">
+                    <img src="link/edit.svg" class="editBtn">
+                </div>
+                <div class="tools">
+                    <a class="home" href="index.html"><img src="link/home.svg" ></a>
+                    <a class="format" href=""><img src="link/format.svg"></a>
+                    <a class="share" href="#"><img src="link/share.svg" class="toolLogo share"></a>
+                    <span class="start-host">Start Hosting</span>
+                </div>
+            </div>
+            <textarea class="edit-area" autofocus></textarea>
+        </div>
+        <div class="output-box">
+            <div class="overlay hide">
+                <img src="link/cross.svg" class="cross">
+                <div class="output-title">Output</div>
+                <div class="output">Click on<b> Compile and Run </b> to see the output</div>
+            </div>
+            <a href="#" class="run">Compile and Run</a>
+        </div>
+    </div>
+</body>
+<script src="link/editorScript.js"></script>
+</html>
