@@ -5,6 +5,10 @@
     font-family: 'montserrat', sans-serif;
 }
 
+#warn {
+    color:white;
+}
+
 html{
     min-height: 100%;
 }

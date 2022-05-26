@@ -32,7 +32,7 @@
         </div>
     </header>
     <div class="container">
-        <div class="dragArea">
+        <div id="dragArea" class="dragArea">
             <div class="symbolBox">
                 <img src="link/html-icon.svg" alt="html image" class="svg1 svg">
                 <img src="link/css-icon.svg" alt="css image" class="svg2 svg">
@@ -44,32 +44,37 @@
                 <p class="txt drag">Drag and Drop your files here</p>
                 <p class="txt or">or</p>
                 <p class="txt">Click to upload files</p>
+                <input type="file" id="filepicker" multiple> 
             </div>
         </div>
-
+        <div class="output">
+            <ul id="listing"></ul>
+        </div>
         <div class="options">
             <p class="setting">Settings</p>
             <div class="hostUrl">
                 <p class="toolTitle">Host URL</p>
-                <div class="url">https://www.kodash.io/ <input type="text" class="siteUrl" value="index.html">
-                    <img src="link/available.svg" alt="available sign" class="available">
+                <div id="url" class="url">https://www.kodash.io/ <input id="siteURL" type="text" class="siteUrl" value="index.html">
+                    <img id="statuscheck" src="./link/loader.gif" alt="available sign" class="available">
+                    <br/><p id="warn"></p>
                 </div>
             </div>
             <div class="duration">
                 <p class="toolTitle">Duration</p>
                 <div class="time">
-                    <div> <input type="radio" name="timeExpire" value="6" id="6h">  <label for="6h">6 hour</label> </div>
+                    <div> <input type="radio" name="timeExpire" value="6" id="6h" checked>  <label for="6h">6 hour</label> </div>
                     <div> <input type="radio" name="timeExpire" value="12" id="12h">  <label for="12h">12 hour</label> </div>
-                    <div> <input type="radio" name="timeExpire" value="1" id="1d">  <label for="1d">1 day</label> </div>
-                    <div> <input type="radio" name="timeExpire" value="1" id="1w">  <label for="1w">1 week</label> </div>
+                    <div> <input type="radio" name="timeExpire" value="1d" id="1d">  <label for="1d">1 day</label> </div>
+                    <div> <input type="radio" name="timeExpire" value="1w" id="1w">  <label for="1w">1 week</label> </div>
                 </div>
             </div>
             <div class="hostbtn">
-                <a href="#" class="host">Start Hosting</a>
+                <a href="#" id="start" class="host">Start Hosting</a>
                 <a href="#" class="edit">Edit</a>
             </div>
         </div>
     </div>
+    <script src="./hosting.js"></script>
 </body>
 <script src="link/script.js"></script>
 </html>
