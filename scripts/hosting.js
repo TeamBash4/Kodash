@@ -1,44 +1,143 @@
-var siteDuration = "4d";
-var siteURL = document.getElementById('siteURL');
-const apiURL = "http://20.239.156.152:8000"
-siteURL.value = randomString(7);
-var siteFiles = document.getElementById("filepicker")
-const submitBTN = document.getElementById("start")
+// ********************************************** //
+//              Hosting Page JS                   //
+// ********************************************** //
 
-// submitBTN.addEventListener('click', checkAvailibility(456));
+// ********************************************** //
+//           Hosting Page Variables               //
+// ********************************************** //
+
+var siteDuration;
+const domain = "http://20.239.156.152"
+const apiURL = `${domain}:8000`
+var siteId = document.getElementById("siteURL");
+var siteDuration;
+var siteIdStatus = document.getElementById("statuscheck");
+var files;
+var hostSec = document.getElementById("hostbtn");
+var startButton = document.getElementById('start')
+// ********************************************** //
+//           Hosting Page DOM Values              //
+// ********************************************** //
+
+window.addEventListener('load', genSiteId)
+
+function genSiteId(){
+    console.log("I am in")
+siteId.value = randomString(7);
+checkSiteId();
+}
+siteId.addEventListener('keyup', checkSiteId);
+
+// Checking the Site ID availability
+
+function checkSiteId() {
+    console.log("Checking Site ID");
+    siteIdStatus.src = "./assets/loader.gif";
+    var websiteId = siteId.value;
+    if (websiteId.length >= 3 && websiteId.length <= 30) {
+        setTimeout(async () => {
+            console.log(websiteId)
+            var checkStatus = await fetch(apiURL + "/isvalid?path=" + websiteId)
+            if (checkStatus.status == 200) {
+                siteIdStatus.src = "./assets/available.svg";
+                console.log(checkStatus.status) // check this error
+            } else if (checkStatus.status == 404) {
+                siteIdStatus.src = "./assets/notAvailable.svg";
+            } else {
+                siteIdStatus.src = "./assets/loader.gif";
+            }
+        }, 1000);
+    }
+}
+
+// Fetching the site duration from user
+function getDuration() {
+    var getSelectedValue = document.querySelector( 'input[name="timeExpire"]:checked');   
+    if(getSelectedValue != null) {   
+             return getSelectedValue.value;  
+    }
+     else {  
+                return "6h";
+     } 
+}
+let dropArea = document.getElementById('dragArea');
+
+;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false)
+  })
+  
+function preventDefaults (e) {
+e.preventDefault()
+e.stopPropagation()
+}
+dropArea.addEventListener('drop', handleDrop, false)
+
+function handleDrop(e) {
+    let dt = e.dataTransfer
+    files = dt.files
+  }
+
+document.getElementById("inputFiles").addEventListener("change", function() {
+if (this.files != null) {
+    files = this.files
+    handleFiles(files)
+}
+else
+{
+    console.log("No files selected");
+}
+})
+
+document.getElementById("start").addEventListener('click', startHostNow)
+function startHostNow()
+{
+    startButton.innerText = "Hosting...";
+    handleFiles(files)
+    var hostedSites = localStorage.getItem("sites");
+    if(hostedSites == null)
+    {
+        console.log("abhi khaali")
+        localStorage.setItem("sites", [siteId.value]);
+    }
+    else
+    {
+        console.log("abhi nahi khaali")
+        console.log(hostedSites)
+        hostedSites += "," + siteId.value;
+        localStorage.setItem("sites", hostedSites);
+    }
+}
+
+function handleFiles(files) {
+    ([...files]).forEach(uploadFile)
+    
+  }
 
 /* Sending Files to Kodash server */
 
-submitBTN.addEventListener('click', uploadSite);
+  function uploadFile(file) {
+    let formData = new FormData()
+    formData.append('file', file)
+    var url = `${apiURL}/host?duration=${getDuration()}&path=${siteId.value}`
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(() => { 
+        startButton.remove();
+        let hsButton = document.getElementById("hsButton");
+        hsButton.href = `${domain}/${siteId.value}`;
+        hsButton.style.backgroundColor = "#00bcd4";
+        hsButton.style.display = "block";
+        hsButton.target = "_blank";
+})
+    .catch(() => { document.getElementById("hostedLink").innerText = "Failed to host your files"; })
+    
+  }
 
-function uploadSite(){
-    handleFiles(siteFiles.files)
-}
-
-/* Checking Availability of SiteLink */
-checkAvailibility(455)
-siteURL.addEventListener('input', checkAvailibility)
-
-function checkAvailibility() {
-    document.getElementById("statuscheck").src = "link/loader.gif";
-    var websiteId = siteURL.value;
-        if (websiteId.length >= 3 && websiteId.length <= 30) {
-            setTimeout(async () => {
-                console.log(websiteId)
-                var checkStatus = await fetch(apiURL + "/isvalid?path=" + websiteId)
-                if (checkStatus.status == 200) {
-                    document.getElementById("statuscheck").src = "./link/available.svg";
-                    console.log(checkStatus.status) // check this error
-                } else if (checkStatus.status == 404) {
-                    document.getElementById("statuscheck").src = "./link/notAvailable.svg";
-                } else {
-                    document.getElementById("statuscheck").src = "./link/loader.gif";
-                }
-            }, 1000);
-        }
-    }
-
-/* Generating a Random String */
+// ********************************************** //
+// Get Random String
+// ********************************************** //
 
 function randomString(length) {
     var result = '';
@@ -50,50 +149,3 @@ function randomString(length) {
     }
     return result;
 }
-
-
-let dropArea = document.getElementById('dragArea')
-
-;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-    
-    dropArea.addEventListener(eventName, preventDefaults, false)
-})
-
-function preventDefaults (e) {
-    e.preventDefault()
-    e.stopPropagation()
-}
-dropArea.addEventListener('drop', handleDrop, false)
-
-function handleDrop(e) {
-  let dt = e.dataTransfer
-  let files = dt.files
-
-  handleFiles(files)
-}
-
-function handleFiles(files) {
-    ([...files]).forEach(uploadFile)
-  }
-  function uploadFile(file) {
-    let formData = new FormData()
-    formData.append('file', file)
-    var url = `${apiURL}/host?duration=${siteDuration}&path=${siteURL.value}`
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-    .then(() => { 
-        var hostedSites = localStorage.getItem("sites");
-        if (hostedSites == null) {
-            localStorage.setItem("sites", siteURL.value);
-        } else {
-            localStorage.setItem("sites", hostedSites + "," + siteURL.value);
-        }
-        submitBTN.innerText = "Go to Website";
-        submitBTN.href = `http://20.239.156.152/${siteURL.value}`;
-        submitBTN.id = "hostedLink";
-
-})
-    .catch(() => { document.getElementById("warn").innerText = "Failed to host your files"; })
-  }
