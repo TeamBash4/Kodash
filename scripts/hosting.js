@@ -77,7 +77,7 @@ function handleDrop(e) {
     files = dt.files
   }
 
-document.getElementById("inputFiles").addEventListener("change", function() {
+document.getElementById("inputFile").addEventListener("change", function() {
 if (this.files != null) {
     files = this.files
     handleFiles(files)
