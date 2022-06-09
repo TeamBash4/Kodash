@@ -106,6 +106,7 @@ else
 {
     alert("Please upload index.html file");
 }
+}
 
 function handleFiles(files) {
     ([...files]).forEach(uploadFile)
