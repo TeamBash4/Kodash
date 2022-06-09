@@ -101,22 +101,6 @@ function startHostNow() {
     } else {
         alert("Please upload index.html file");
     }
-<<<<<<< HEAD
-=======
-    else
-    {
-        console.log("abhi nahi khaali")
-        console.log(hostedSites)
-        hostedSites += "," + siteId.value;
-        localStorage.setItem("sites", hostedSites);
-    }
-}
-else
-{
-    alert("Please upload index.html file");
-}
-}
->>>>>>> e2a1fb7f80d2fac6add479f1f2795590d966b025
 
     function handleFiles(files) {
         ([...files]).forEach(uploadFile)
