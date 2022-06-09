@@ -80,6 +80,12 @@ function handleDrop(e) {
 document.getElementById("start").addEventListener('click', startHostNow)
 function startHostNow()
 {
+    for (var i = 0; i < files.length; i++) {
+        if (files[i].name==="index.html") {
+            flag = 1;
+        }
+    }
+    if (flag == 1) {
     startButton.innerText = "Hosting...";
     handleFiles(files)
     var hostedSites = localStorage.getItem("sites");
@@ -95,6 +101,10 @@ function startHostNow()
         hostedSites += "," + siteId.value;
         localStorage.setItem("sites", hostedSites);
     }
+}
+else
+{
+    alert("Please upload index.html file");
 }
 
 function handleFiles(files) {
