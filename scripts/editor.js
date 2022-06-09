@@ -2,18 +2,7 @@
 // ============JavaScript code for The Kodash Code Editor=========== // 
 // ================================================================= //
 
-/*      BUGS TO FIX       */
-/*
-1. Fix the Code Execution Output thing
-2. Format code option
-3. Add Microsoft Code Editor
-4. Fix the style of the code editor
-5. Make everything responsive
-
-*/
 // Share Button Overlay for showing share link //
-
-'use strict'
 
 const overlay = document.querySelector(".overlay");
 const cross = document.querySelector(".cross");
@@ -40,7 +29,8 @@ share.addEventListener('click', sharelink);
 //     Kodash API Variables    //
 // *************************** //
 
-const api = "http://20.239.156.152:8000"
+const api = "https://api.kodash.live"
+const domain = "https://kodash.live"
 var codelang;
 var langversion;
 
@@ -60,10 +50,37 @@ function getCode() {
             let code = data.content[0].content;
             document.getElementById("filename").innerHTML = filename;
             document.getElementById("code-editor").innerHTML = code;
-            document.getElementById("codeLink").innerHTML = `${domain}\editor.html?id=${codeid}`;
+            document.getElementById("codeLink").value = `${domain}/editor.html?id=${codeid}`;
         }
         )
         .catch(error => console.log(error));
+}
+
+//  Check code id validity //
+
+
+
+function validId(codeid){
+    fetch(`${api}/isValidID?id=${codeid}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.status == 200){
+                return 200;
+            }
+            else{
+                return 404;
+            }
+        })
+}
+
+document.getElementById("copybtn").addEventListener("click", copyShareLink);
+
+// Copy share link
+function copyShareLink()
+{
+    document.getElementById("codeLink").select();
+    document.execCommand("copy");
 }
 
 // Store the current code to the backend //
@@ -71,8 +88,8 @@ function getCode() {
 document.getElementById("sharebtn").addEventListener("click", sendCode);
 
 function sendCode() {
-    console.log("Sending Code");
     let codeid = randomString(7);
+    if (validId(codeid) == 200) {
     let filename = document.getElementById("filename").innerHTML;
     let code = document.getElementById("code-editor").innerHTML;
     let apiURl = `${api}/store?id=${codeid}&filename=${filename}`;
@@ -83,11 +100,16 @@ function sendCode() {
     })
         .then(() => {
             console.log("Code stored");
-            document.getElementById("codeLink").innerText = `${domain}\editor.html?id=${codeid}`;
+            document.getElementById("codeLink").value = `${domain}/editor.html?id=${codeid}`;
+
         })
         .catch(error => console.log(error));
 }
+else{
+    console.log("Code ID already exists");
+    sendCode();
 
+}}
 // Function to generate Random ID for storing code //
 
 function randomString(length) {
@@ -176,8 +198,9 @@ document.getElementById("run").addEventListener("click", runCode);
 function runCode()
 {
     langdetection()
-    let code = document.getElementById("code-editor").innerHTML;
-    let filename = document.getElementById("filename").innerHTML;
+    let code = document.getElementById("code-editor").value;
+    let filename = document.getElementById("filename").value;
+    let codeinput = document.getElementById("output").value;
     let apiURL = "https://emkc.org/api/v2/piston/execute";
     console.log(typeof(codelang));
     if (codelang != "document" && codelang != "css")
@@ -189,7 +212,8 @@ function runCode()
                 {
                     "name": filename,
                     "content": code
-        }]
+        }],
+        'stdin' : codeinput
         }
         fetch(apiURL, {
             method: 'POST',
@@ -197,9 +221,10 @@ function runCode()
         })
             .then(response => response.json())
             .then(data => {
+                document.getElementById("intitle").innerText = "Output";
                 console.log(data);
-                let output = data.output;
-                document.getElementById("output").innerHTML = output;
+                let output = data.run.stdout;
+                document.getElementById("output").value = output;
             }
             )
             .catch(error => console.log(error));

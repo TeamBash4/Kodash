@@ -7,8 +7,8 @@
 // ********************************************** //
 
 var siteDuration;
-const domain = "http://20.239.156.152"
-const apiURL = `${domain}:8000`
+const domain = "https://api.kodash.live"
+const apiURL = `${domain}`
 var siteId = document.getElementById("siteURL");
 var siteDuration;
 var siteIdStatus = document.getElementById("statuscheck");
@@ -77,17 +77,6 @@ function handleDrop(e) {
     files = dt.files
   }
 
-document.getElementById("inputFile").addEventListener("change", function() {
-if (this.files != null) {
-    files = this.files
-    handleFiles(files)
-}
-else
-{
-    console.log("No files selected");
-}
-})
-
 document.getElementById("start").addEventListener('click', startHostNow)
 function startHostNow()
 {
@@ -131,7 +120,7 @@ function handleFiles(files) {
         hsButton.style.display = "block";
         hsButton.target = "_blank";
 })
-    .catch(() => { document.getElementById("hostedLink").innerText = "Failed to host your files"; })
+    .catch(() => { console.log("Failed!") })
     
   }
 

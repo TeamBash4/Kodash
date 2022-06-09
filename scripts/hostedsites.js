@@ -1,7 +1,7 @@
 function loadSites(){
     var sites = localStorage.getItem("sites").split(",");
     var sitelist;
-    var domain = "http://20.239.156.152/"
+    var domain = "https://kodash.live"
     for(var i = 0; i < sites.length; i++){
     sitelist += `<div class="hosted-site">
     <a href="${domain}${sites[i]}"><div class="name">
