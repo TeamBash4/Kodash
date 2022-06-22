@@ -7,14 +7,15 @@
 // ********************************************** //
 
 var siteDuration;
-const domain = "https://api.kodash.live"
-const apiURL = `${domain}`
+const domain = "https://kodash.live"
+const apiURL = `https://api.kodash.live`
 var siteId = document.getElementById("siteURL");
 var siteDuration;
 var siteIdStatus = document.getElementById("statuscheck");
 var files;
 var hostSec = document.getElementById("hostbtn");
-var startButton = document.getElementById('start')
+var startButton = document.getElementById('start');
+var flag;
 // ********************************************** //
 //           Hosting Page DOM Values              //
 // ********************************************** //
