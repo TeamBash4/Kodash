@@ -33,7 +33,7 @@ const api = "https://api.kodash.live"
 const domain = "https://kodash.live"
 var codelang;
 var langversion;
-
+var runcode = 0;
 // Get the current code from the backend //
 
 function getCode() {
@@ -197,6 +197,7 @@ document.getElementById("run").addEventListener("click", runCode);
 
 function runCode()
 {
+    runcode = 1;
     langdetection()
     let code = document.getElementById("code-editor").value;
     let filename = document.getElementById("filename").value;
@@ -223,14 +224,27 @@ function runCode()
             .then(data => {
                 document.getElementById("intitle").innerText = "Output";
                 console.log(data);
-                let output = data.run.stdout;
-                document.getElementById("output").value = output;
-            }
+                if (data.run.stdout == '')
+                {
+                 document.getElementById("output").value = data.run.stderr;   
+                }
+                else{
+                 document.getElementById("output").value = data.run.stdout;
+                }}
             )
             .catch(error => console.log(error));
     }
         
 }
+document.getElementById("code-editor").addEventListener('click', () => {
+    if (runcode == 1){
+        document.getElementById("output").value = '';
+        document.getElementById("intitle").innerText = "Input";
+        runcode = 0;
+    }
+    
+})
+
 /*
 
 ===========  ============   """""""""   ==        ==

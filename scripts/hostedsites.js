@@ -1,7 +1,8 @@
 function loadSites(){
     var sites = localStorage.getItem("sites").split(",");
-    var sitelist;
+    var sitelist = '';
     var domain = "https://kodash.live"
+    console.log(sites)
     for(var i = 0; i < sites.length; i++){
     sitelist += `<div class="hosted-site">
     <a href="${domain}${sites[i]}"><div class="name">
@@ -11,7 +12,7 @@ function loadSites(){
     <div class="csd-btn">
         <img src="./assets/copy.svg">
         <a href="${domain}${sites[i]}"><img src="./assets/share.svg"></a>
-        <img src="./assets/delete.svg">
+        <img id="" class="${sites[i]}" src="./assets/delete.svg">
         <span class="time">Hosted 3 days ago </span>
     </div>
 </div>`;
@@ -20,3 +21,5 @@ document.getElementById("hosted-sites").innerHTML = sitelist;
 }
 
 window.addEventListener('load', loadSites)
+
+document.getElementById('deletebtn', deletesite)

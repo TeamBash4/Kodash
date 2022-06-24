@@ -7,14 +7,15 @@
 // ********************************************** //
 
 var siteDuration;
-const domain = "https://api.kodash.live"
-const apiURL = `${domain}`
+const domain = "https://kodash.live"
+const apiURL = `https://api.kodash.live`
 var siteId = document.getElementById("siteURL");
 var siteDuration;
 var siteIdStatus = document.getElementById("statuscheck");
 var files;
 var hostSec = document.getElementById("hostbtn");
-var startButton = document.getElementById('start')
+var startButton = document.getElementById('start');
+var flag;
 // ********************************************** //
 //           Hosting Page DOM Values              //
 // ********************************************** //
@@ -122,7 +123,7 @@ function uploadFile(file) {
             startButton.remove();
             let hsButton = document.getElementById("hsButton");
             hsButton.href = `${domain}/${siteId.value}`;
-            hsButton.style.backgroundColor = "#00bcd4";
+            hsButton.style.backgroundColor = "#27ae60";
             hsButton.style.display = "block";
             hsButton.target = "_blank";
         })
@@ -156,3 +157,8 @@ const dragEl = document.getElementById('dragArea');
 const inputFileEl = document.getElementById('inputFile');
 
 dragEl.addEventListener('click', () => inputFileEl.click());
+
+inputFileEl.addEventListener('change', ()=>{
+    files = inputFileEl.files;
+    console.log(files);
+});
