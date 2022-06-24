@@ -65,6 +65,28 @@ header{
     justify-content: space-between;
 }
 
+.about, .FAQ{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about::before, .FAQ::before{
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    border-radius: 5px;
+    transition-duration: 300ms;
+    opacity: 0.7;
+}
+
+.about:hover::before, .FAQ:hover::before{
+    width: 100%;
+}
+
 .btn{
     border: none;
     background-color: transparent;
@@ -129,12 +151,10 @@ main{
 .hostBtn, .editorBtn{
     background-image: linear-gradient(to top left, rgba(233, 242, 224, 0.85), rgba(233, 242, 184, 0.7));
     padding: 30px 30px;
-    padding-left: 40px;
     border-radius: 20px;
-    text-align: left;
     min-width: 330px;
     position: relative;
-    width: 30vw;
+    width: 27vw;
     overflow: hidden;
     cursor: pointer;
 }
@@ -166,6 +186,7 @@ main{
     font-size: 2vw;
     font-weight: 800;
     color: #222;
+    text-align: left;
 }
 
 .short-desc{
@@ -173,6 +194,7 @@ main{
     font-weight: 500;
     margin-top: 15px;
     color: #222;
+    text-align: left;
 }
 
 .host-title{
@@ -203,7 +225,7 @@ main{
     overflow: scroll;
     scrollbar-width: none;
     overflow-x: hidden;
-    padding-bottom: 40px;
+    padding-bottom: 4rem;
 }
 
 .hosted-site{
@@ -233,8 +255,9 @@ main{
     font-weight: bold;
 }
 
-.sl, .site-title{
+.sl, .site-title a{
     font-size: 1.2rem;
+    color: white;
 }
 
 .site-title{
@@ -255,6 +278,7 @@ main{
 
 .csd-btn img{
     height: 20px;
+    margin-right: 1rem;
     cursor: pointer;
 }
 
@@ -268,6 +292,10 @@ main{
 }
 
 .close{
+    display: none;
+}
+
+.share{
     display: none;
 }
 
@@ -398,9 +426,19 @@ main{
         width: 90%;
         margin-top: 8%;
         height: 77vh;
+        padding-bottom: 0;
     }
 
     .site-title, .sl{
         font-size: 1.1rem;
+    }
+
+    .share{
+        display: block;
+    }
+
+    .csd-btn div{
+        display: flex;
+        width: 70%;
     }
 }
