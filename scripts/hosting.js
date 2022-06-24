@@ -123,7 +123,7 @@ function uploadFile(file) {
             startButton.remove();
             let hsButton = document.getElementById("hsButton");
             hsButton.href = `${domain}/${siteId.value}`;
-            hsButton.style.backgroundColor = "#00bcd4";
+            hsButton.style.backgroundColor = "#27ae60";
             hsButton.style.display = "block";
             hsButton.target = "_blank";
         })
@@ -157,3 +157,8 @@ const dragEl = document.getElementById('dragArea');
 const inputFileEl = document.getElementById('inputFile');
 
 dragEl.addEventListener('click', () => inputFileEl.click());
+
+inputFileEl.addEventListener('change', ()=>{
+    files = inputFileEl.files;
+    console.log(files);
+});
