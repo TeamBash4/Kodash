@@ -90,6 +90,7 @@ header{
 .btn{
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 a{
