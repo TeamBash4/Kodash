@@ -17,6 +17,7 @@ body{
     color: white;
     user-select: none;
     padding-bottom: 3rem;
+    overflow-x: hidden;
 }
 
 .flex{
@@ -90,38 +91,100 @@ a{
     display: none;
 }
 
-.about, .FAQ{
+
+
+
+.container {
+    margin: 0 auto;
+    padding: 4rem;
+    width: 65%;
+    margin-top: 3rem;
+}
+
+h2{
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: #373d51;
+    padding: 1.3rem;
+    margin: 0;
+}
+
+.accordion a {
     position: relative;
     display: flex;
-    justify-content: center;
-}
-
-.about::before, .FAQ::before{
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    border-radius: 5px;
-    transition-duration: 300ms;
-    opacity: 0.7;
-}
-
-.about:hover::before, .FAQ:hover::before{
+    flex-direction: column;
     width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.desc{
-    width: 70%;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-top: 5rem;
+.accordion a:hover, .accordion a:hover::after {
+    cursor: pointer;
+    color: lightgreen;
+}
+
+.accordion a:hover::after {
+    border: 1px solid lightgreen;
+}
+
+.accordion a.active {
+    color: lightgreen;
+    border-bottom: 1px solid lightgreen;
+}
+
+.accordion a::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
     font-size: 1.5rem;
-    text-align: justify;
+    color: #7288a2;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #7288a2;
+    text-align: center;
+}
+
+.accordion a.active::after {
+    content: '-';
+    color: lightgreen;
+    border: 1px solid lightgreen;
+}
+
+.accordion .content {
+    opacity: 0;
+    padding: 0 1rem;
+    max-height: 0;
+    border-bottom: 1px solid lightgreen;
+    overflow: hidden;
+    transition: all 200ms ease 150ms;
+}
+
+.accordion .content p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.accordion .content.active {
+    opacity: 1;
+    padding: 1.5rem;
+    max-height: 100%;
 }
 
 
+
+
+@media only screen and (max-width: 1000px){
+    .container{
+        width: 80%;
+    }
+}
 
 @media only screen and (max-width: 640px){
 
@@ -204,10 +267,7 @@ a{
         margin: 4% 8% 0 8%;
     }
 
-    .desc{
-        margin-top: 3rem;
-        text-align: center;
-        width: 80%;
-        line-height: 1.5;
+    .container{
+        width: 100%;
     }
 }
