@@ -81,6 +81,7 @@ function handleDrop(e) {
 document.getElementById("start").addEventListener('click', startHostNow)
 
 function startHostNow() {
+    var currentdate = new Date();
     for (var i = 0; i < files.length; i++) {
         if (files[i].name === "index.html") {
             flag = 1;
@@ -91,22 +92,35 @@ function startHostNow() {
         handleFiles(files)
         var hostedSites = localStorage.getItem("sites");
         if (hostedSites == null) {
-            console.log("abhi khaali")
-            localStorage.setItem("sites", [siteId.value]);
+            localStorage.setItem("sites", `${siteId.value}$${currentdate.getTime()}`);
         } else {
-            console.log("abhi nahi khaali")
-            console.log(hostedSites)
-            hostedSites += "," + siteId.value;
+            console.log(currentdate.getTime());
+            hostedSites += `,${siteId.value}$${currentdate.getTime()}`;
             localStorage.setItem("sites", hostedSites);
         }
     } else {
-        alert("Please upload index.html file");
+        showerror("index.html file missing.");
     }
 
     function handleFiles(files) {
         ([...files]).forEach(uploadFile)
 
     }
+}
+
+/////////////////////////////////////////////
+
+document.getElementById("close").addEventListener('click', hideerror);
+
+function showerror(errors)
+{
+    document.getElementById("errorcontent").innerText = errors;
+    document.getElementById("error").style.display = "flex";
+    
+}
+
+function hideerror(){
+    document.getElementById("error").style.display = "none";
 }
 
 /* Sending Files to Kodash server */

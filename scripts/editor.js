@@ -37,31 +37,35 @@ var runcode = 0;
 // Get the current code from the backend //
 
 function getCode() {
+    console.log("chala")
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
     let codeid = params.id;
-    let apiURl = `${api}/retreive?id=${codeid}`;
+    let apiURl = `${api}/retrieve?id=${codeid}`;
     fetch(apiURl)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             let filename = data.content[0].filename;
             let code = data.content[0].content;
-            document.getElementById("filename").innerHTML = filename;
-            document.getElementById("code-editor").innerHTML = code;
+            console.log(code)
+            document.getElementById("filename").value = filename;
+            document.getElementById("code-editor").value = code;
             document.getElementById("codeLink").value = `${domain}/editor.html?id=${codeid}`;
         }
         )
         .catch(error => console.log(error));
 }
 
+window.addEventListener('load', getCode);
+
 //  Check code id validity //
 
 
 
 function validId(codeid){
-    fetch(`${api}/isValidID?id=${codeid}`)
+    fetch(`${api}/isvalidID?id=${codeid}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -85,15 +89,17 @@ function copyShareLink()
 
 // Store the current code to the backend //
 
-document.getElementById("sharebtn").addEventListener("click", sendCode);
+document.getElementById("share").addEventListener("click", sendCode);
 
 function sendCode() {
     let codeid = randomString(7);
-    if (validId(codeid) == 200) {
-    let filename = document.getElementById("filename").innerHTML;
-    let code = document.getElementById("code-editor").innerHTML;
+    console.log(`love: validId`)
+    if (true) {
+    let filename = document.getElementById("filename").value;
+    let code = document.getElementById("code-editor").value;
     let apiURl = `${api}/store?id=${codeid}&filename=${filename}`;
-    console.log(codeid, filename, apiURl)
+    console.log(codeid, filename, apiURl);
+    console.log("bagha")
     fetch(apiURl, {
         method: 'POST',
         body: code
@@ -101,14 +107,13 @@ function sendCode() {
         .then(() => {
             console.log("Code stored");
             document.getElementById("codeLink").value = `${domain}/editor.html?id=${codeid}`;
+            console.log(`${domain}/editor.html?id=${codeid}`)
 
         })
         .catch(error => console.log(error));
 }
 else{
     console.log("Code ID already exists");
-    sendCode();
-
 }}
 // Function to generate Random ID for storing code //
 
@@ -244,6 +249,9 @@ document.getElementById("code-editor").addEventListener('click', () => {
     }
     
 })
+
+
+
 
 /*
 

@@ -300,6 +300,32 @@ input[type="radio"]:checked+label{
     color: #61f10e;
 }
 
+.error{
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1rem;
+    color: white;
+    background-color: #3D465D;
+    padding: 0.5rem 2rem;
+    padding-right: 1rem;
+    letter-spacing: 1px;
+    border-radius: 0.5rem;
+    display: none;
+    align-items: center;
+}
+
+.error .errorbtn{
+    display:block;
+    font-size: 2rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    cursor: pointer;
+    user-select: none;
+    color: rgb(255, 111, 111);
+    font-weight: 550;
+}
+
+
 
 
 @media only screen and (max-width: 640px){
