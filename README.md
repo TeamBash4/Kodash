@@ -9,7 +9,7 @@ Website: https://kodash.live
 Kodash allows you to paste your code in the code editor, compile and run your code to get the desired output. We support multiple languages like HTML, CSS, Javascript, Python, C, C++, Ruby and Go. Along with that, you can also share your code with a unique link.
 
 ## 2. Host Static Websites
-Kodash provides static website hosting service. You can host your static website instantly with us and share it with a unique and custom link.
+Kodash provides static website hosting service where  You can host your static website instantly with us and share it with a unique and custom link.It is very unique feature and saves a lot of time.
 
 ---
 ![](https://raw.githubusercontent.com/TeamBash4/Kodash/main/kodash.jpg)
