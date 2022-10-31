@@ -3,6 +3,8 @@ Kodash is a development and deployment platform for developers. It allows users 
 1. Compile, Run and Share Code
 2. Host Static websites
 
+Website: https://kodash.live
+
 ## 1. Compile, Run and Share Code
 Kodash allows you to paste your code in the code editor, compile and run your code to get the desired output. We support multiple languages like HTML, CSS, Javascript, Python, C, C++, Ruby and Go. Along with that, you can also share your code with a unique link.
 
